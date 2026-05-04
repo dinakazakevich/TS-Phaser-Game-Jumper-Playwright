@@ -6,6 +6,7 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 *.vscode
+PROMPTS_USED.md
 
 # Vendors
 node_modules/
@@ -13,3 +14,5 @@ node_modules/
 # Build
 dist/
 /npm-debug.log
+playwright-report/
+test-results/

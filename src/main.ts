@@ -27,4 +27,11 @@ const config: Phaser.Types.Core.GameConfig = {
 	scene: [Boot, Preloader, MainMenu, Leaderboard, Game, GameOver],
 };
 
-export default new Phaser.Game(config);
+const game = new Phaser.Game(config);
+
+// Expose game instance globally for testing and debugging
+if (typeof window !== 'undefined') {
+	(window as any).game = game;
+}
+
+export default game;

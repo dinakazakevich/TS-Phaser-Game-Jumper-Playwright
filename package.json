@@ -10,7 +10,11 @@
 		"lint": "eslint src --ext .ts",
 		"lint:fix": "npm run lint -- --fix",
 		"format": "prettier --check .",
-		"format:fix": "prettier --write ."
+		"format:fix": "prettier --write .",
+		"test:game": "playwright test",
+		"test:game:ui": "playwright test --ui",
+		"test:game:debug": "playwright test --debug",
+		"test:game:headed": "playwright test --headed"
 	},
 	"repository": {
 		"type": "git",
@@ -30,6 +34,7 @@
 		"@babel/core": "^7.29.0",
 		"@babel/preset-env": "^7.29.2",
 		"@eslint/js": "^9.38.0",
+		"@playwright/test": "^1.40.1",
 		"@types/node": "^24.12.2",
 		"babel-loader": "^9.2.1",
 		"clean-webpack-plugin": "^4.0.0",
