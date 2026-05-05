@@ -111,37 +111,36 @@ test.describe('🎮 Jumper Game - Automation Test Suite', () => {
   // ===================================================================
 
   test.describe('3️⃣ Coin Collection Mechanics', () => {
-    test('should collect coins and increase score', async () => {
+    test('should collect coins and increase score and bombs', async () => {
       const initialScore = await tester.getScore();
       const initialCoins = await tester.getCoinsRemaining();
 
       // Play for a bit to collect coins
-      await tester.testCoinCollection();
+      await tester.teleportPlayer(0, 50)
+      await tester.page.waitForTimeout(1000);
+      await tester.holdKey('ArrowRight', 1500)
 
       const finalScore = await tester.getScore();
       const finalCoins = await tester.getCoinsRemaining();
+      const finalBombs = await tester.getBombsActive();
 
       expect(finalScore).toBeGreaterThan(initialScore);
+      expect(finalScore).toBe((initialCoins-finalCoins)*10);
       expect(finalCoins).toBeLessThan(initialCoins);
+      expect (finalBombs).toBe(initialCoins-finalCoins);
     });
 
     test('should add 3 seconds to timer when collecting coin', async () => {
       const initialTimer = await tester.getTimer();
 
       // Move and collect a coin
-      await tester.moveRight(3);
-      await tester.tapJump();
+      await tester.teleportPlayer(0, 50)
       await tester.page.waitForTimeout(1000);
 
       const finalTimer = await tester.getTimer();
 
       // Timer might have ticked down too, but should be roughly 3 seconds higher
       expect(finalTimer).toBeGreaterThan(initialTimer - 2);
-    });
-
-    test('should collect multiple coins in sequence', async () => {
-      const coinsCollected = await tester.testCoinCollection();
-      expect(coinsCollected).toBeGreaterThan(0);
     });
   });
 

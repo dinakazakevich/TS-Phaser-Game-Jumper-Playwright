@@ -93,9 +93,8 @@ The test suite is organized into 11 sections with 30+ individual tests:
 - ✅ WASD controls
 
 ### 3️⃣ Coin Collection (3 tests)
-- ✅ Collect coins and increase score
+- ✅ Collect coins and increase score and add bombs
 - ✅ Timer bonus (+3s per coin)
-- ✅ Multiple coin collection
 
 ### 4️⃣ Bomb Mechanics (4 tests)
 - ✅ Spawn bombs

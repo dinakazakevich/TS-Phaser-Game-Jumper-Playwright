@@ -218,7 +218,7 @@ export class JumperGameTester {
    */
   async getCoinsRemaining(): Promise<number> {
     return await this.page.evaluate(() => {
-      return (window as any).game.scene.getScene('Game').coins.children.entries.length;
+      return (window as any).game.scene.getScene('Game').coins.countActive(true);
     });
   }
 
@@ -227,7 +227,7 @@ export class JumperGameTester {
    */
   async getBombsActive(): Promise<number> {
     return await this.page.evaluate(() => {
-      return (window as any).game.scene.getScene('Game').bombs.children.entries.length;
+      return (window as any).game.scene.getScene('Game').bombs.countActive(true);
     });
   }
 
